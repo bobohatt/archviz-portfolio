@@ -52,7 +52,7 @@ export default function HowWeWorkSheet() {
                             </div>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                            <div className="relative aspect-[3/4] w-full max-w-sm mx-auto ring-1 ring-neutral-200 overflow-hidden bg-neutral-100 lg:order-last"><Image src="/how-we-work/step2.jpg" alt="3D-Modellierung" fill className="object-cover" sizes="(min-width: 1024px) 33vw, 80vw" /></div>
+                            <div className="relative aspect-[3/4] w-full max-w-sm mx-auto ring-1 ring-neutral-200 overflow-hidden bg-neutral-100 lg:order-last"><Image src="/how-we-work/step3.jpg" alt="3D-Modellierung" fill className="object-cover" sizes="(min-width: 1024px) 33vw, 80vw" /></div>
                             <div>
                                 <h3 className="font-jost text-2xl md:text-3xl mb-4">
                                     <span className="text-neutral-400">02 —</span>
