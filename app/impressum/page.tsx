@@ -102,6 +102,13 @@ export default function ImpressumPage() {
               Für den Inhalt verlinkter Seiten sind ausschließlich deren Betreiber verantwortlich.
             </p>
           </section>
+
+          <section className="space-y-4">
+            <h2 className="font-jost text-xl text-neutral-800">Haftung für Inhalte &amp; Links</h2>
+            <p>
+              Hosted on Vercel.
+            </p>
+          </section>
         </div>
       </div>
     </motion.div>
