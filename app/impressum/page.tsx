@@ -104,10 +104,7 @@ export default function ImpressumPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-jost text-xl text-neutral-800">Haftung für Inhalte &amp; Links</h2>
-            <p>
-              Hosted on Vercel.
-            </p>
+            <h2 className="font-jost text-xl text-neutral-800">Hosted on Vercel.</h2>
           </section>
         </div>
       </div>
