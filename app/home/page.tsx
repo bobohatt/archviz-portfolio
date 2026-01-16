@@ -25,8 +25,6 @@ export default function HomePage() {
     return () => window.removeEventListener("resize", setHeaderVar);
   }, []);
 
-  const PADDING = "p-6";
-
   return (
     <main className="min-h-screen bg-white text-neutral-900 selection:bg-black selection:text-white">
       <header ref={headerRef} className="sticky top-0 z-30 bg-white border-b border-neutral-200 pt-[15px] pb-[15px]">
@@ -44,9 +42,6 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className={`mx-auto max-w-7xl ${PADDING} text-center`}>
-        <h1 className="font-jost text-4xl md:text-2xl tracking-tight leading-[1.1]"></h1>
-      </section>
 
     <section id="work" className="px-[40px] max-w-[2000px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[40px] relative">

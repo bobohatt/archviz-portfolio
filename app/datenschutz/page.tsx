@@ -48,7 +48,7 @@ export default function DatenschutzSheet() {
                     <p><strong>7. Speicherdauer</strong><br />Wir verarbeiten personenbezogene Daten nur so lange, wie es für die jeweiligen Zwecke erforderlich ist bzw. gesetzliche Aufbewahrungspflichten bestehen.</p>
                     <p><strong>8. Ihre Rechte</strong><br />Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20), Widerspruch (Art. 21), Widerruf erteilter Einwilligungen (Art. 7 Abs. 3), Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO).</p>
                     <p><strong>9. Datensicherheit</strong><br />TLS/SSL‑Verschlüsselung; technische und organisatorische Maßnahmen nach Art. 32 DSGVO.</p>
-                    <p><strong>10. Aktualität</strong><br />Stand: August 2025. Änderungen dieser Erklärung bleiben vorbehalten.</p>
+                    <p><strong>10. Aktualität</strong><br />Stand: Januar 2026. Änderungen dieser Erklärung bleiben vorbehalten.</p>
                 </div>
             </div>
         </motion.div>

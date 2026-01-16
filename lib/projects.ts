@@ -74,7 +74,7 @@ export const PROJECTS: Project[] = [
     id: "velostation",
     title: "Velo Station",
     description: "WaArchi Studio",
-    location: "Rotterdam, Nethderlands",
+    location: "Rotterdam, Netherlands",
     images: [
     p("velostation", "thumb.jpg"),
     p("velostation", "01.jpg"),
