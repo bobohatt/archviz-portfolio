@@ -12,9 +12,12 @@ function CloseIcon({ className = "" }: { className?: string }) { return <svg vie
 export default function ContactSheet() {
     const router = useRouter();
     
-    // NEU: 'close' wird mit useCallback stabilisiert
     const close = useCallback(() => {
-        router.back();
+        if (window.history.length > 1) {
+            router.back();
+        } else {
+            router.push('/home');
+        }
     }, [router]);
 
     // Schließen per Escape-Taste
@@ -27,10 +30,10 @@ export default function ContactSheet() {
     // NEU: 'close' wird hier als Abhängigkeit hinzugefügt
     }, [close]); 
     
-    // Scroll-Lock für den Body hinzufügen, passend zum neuen Vollbild-Stil
-    useEffect(() => { 
-        document.body.style.overflow = "hidden"; 
-        return () => { document.body.style.overflow = ""; }; 
+    useEffect(() => {
+        const prev = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => { document.body.style.overflow = prev; };
     }, []);
 
     return (

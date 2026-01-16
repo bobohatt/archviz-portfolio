@@ -1,8 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+
+const EXIT_DURATION = 350; // ms - matches the motion.div exit transition
 
 function EntryHoverInvert({
   src,
@@ -34,26 +36,37 @@ export default function EntryPage() {
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [minDelayDone, setMinDelayDone] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+  const exitTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Ein kurzer Delay, damit die Animation nicht zu abrupt ist
+  // Short delay so the animation isn't too abrupt
   useEffect(() => {
     const t = setTimeout(() => setMinDelayDone(true), 300);
     return () => clearTimeout(t);
   }, []);
 
+  // Clean up exit timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (exitTimeoutRef.current) {
+        clearTimeout(exitTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleEnter = () => {
+    if (isExiting) return; // Prevent double-clicks
     setIsExiting(true);
-    // Nach der Ausblendanimation zur neuen Seite navigieren
-    setTimeout(() => {
+    exitTimeoutRef.current = setTimeout(() => {
       router.push('/home');
-    }, 400); // Dauer der Exit-Animation
+    }, EXIT_DURATION);
   };
-  
+
   // Body scroll lock
   useEffect(() => {
+    const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = prev;
     };
   }, []);
 
@@ -69,7 +82,7 @@ export default function EntryPage() {
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
+            transition={{ duration: EXIT_DURATION / 1000, ease: "easeOut" }}
             aria-hidden="true"
           />
         )}
@@ -83,7 +96,7 @@ export default function EntryPage() {
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
+            transition={{ duration: EXIT_DURATION / 1000, ease: "easeOut" }}
             aria-label="Enter site"
           >
             <div className="absolute inset-0 -z-10">
@@ -93,9 +106,13 @@ export default function EntryPage() {
             <div className="text-center space-y-4 px-6 text-white drop-shadow">
               <Image src="/logow.png" alt="WaArchi" width={500} height={150} className="mx-auto h-28 w-auto pointer-events-none" priority />
               <p className="font-jost text-xl tracking-wide opacity-100 pointer-events-none">WaArchi Studio</p>
-              <div className="mx-auto mt-30" onClick={handleEnter}>
+              <button
+                className="mx-auto mt-30 bg-transparent border-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 rounded-full"
+                onClick={handleEnter}
+                aria-label="Enter website"
+              >
                 <EntryHoverInvert src="/entry.png" alt="Enter" size={150} durationMs={500} />
-              </div>
+              </button>
             </div>
           </motion.div>
         )}

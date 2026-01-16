@@ -16,7 +16,11 @@ export default function ImpressumPage() {
   const router = useRouter();
 
   const close = useCallback(() => {
-    router.back();
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push('/home');
+    }
   }, [router]);
 
   useEffect(() => {

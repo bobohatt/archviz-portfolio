@@ -150,7 +150,7 @@ export default function ProjectClientView({ project }: { project: Project }) {
             fill
             className="object-contain"
             sizes="100vw"
-            priority
+            priority={index === 0}
           />
         </div>
 
@@ -210,7 +210,7 @@ export default function ProjectClientView({ project }: { project: Project }) {
                     <div className="mx-auto w-max flex gap-2">
                       {slides.map((src, i) => (
                         <button
-                          key={src + i}
+                          key={src}
                           onClick={() => setIndex(i)}
                           className={`relative aspect-square h-12 shrink-0 overflow-hidden ring-1 transition ${
                             i === index
@@ -290,7 +290,7 @@ export default function ProjectClientView({ project }: { project: Project }) {
                 fill
                 className="object-contain"
                 sizes="100vw"
-                priority
+                priority={index === 0}
               />
             </div>
           </div>
@@ -320,7 +320,7 @@ export default function ProjectClientView({ project }: { project: Project }) {
                     <div className="mx-auto w-max flex gap-3">
                       {slides.map((src, i) => (
                         <button
-                          key={src + i}
+                          key={src}
                           onClick={() => setIndex(i)}
                           className={`relative aspect-square h-12 shrink-0 overflow-hidden  transition ${
                             i === index ? "outline outline-2 outline-black" : "hover:outline hover:outline-1 hover:outline-neutral-400"

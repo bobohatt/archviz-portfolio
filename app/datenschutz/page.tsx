@@ -9,9 +9,12 @@ function CloseIcon({ className = "" }: { className?: string }) { return <svg vie
 export default function DatenschutzSheet() {
     const router = useRouter();
     
-    // NEU: 'close' wird mit useCallback stabilisiert
     const close = useCallback(() => {
-        router.back();
+        if (window.history.length > 1) {
+            router.back();
+        } else {
+            router.push('/home');
+        }
     }, [router]);
 
     useEffect(() => { 
@@ -23,9 +26,10 @@ export default function DatenschutzSheet() {
     // NEU: 'close' wird hier als Abhängigkeit hinzugefügt
     }, [close]); 
 
-    useEffect(() => { 
-        document.body.style.overflow = "hidden"; 
-        return () => { document.body.style.overflow = ""; }; 
+    useEffect(() => {
+        const prev = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => { document.body.style.overflow = prev; };
     }, []);
 
     return (

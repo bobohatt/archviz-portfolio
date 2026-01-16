@@ -11,7 +11,11 @@ export default function AboutSheet() {
   const router = useRouter();
   
   const close = useCallback(() => {
-    router.back();
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push('/home');
+    }
   }, [router]);
 
   useEffect(() => { 
@@ -22,9 +26,10 @@ export default function AboutSheet() {
     return () => window.removeEventListener('keydown', onKey); 
   }, [close]); // 'close' hier hinzugefügt
 
-  useEffect(() => { 
-    document.body.style.overflow = "hidden"; 
-    return () => { document.body.style.overflow = ""; }; 
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = prev; };
   }, []);
 
   return (
