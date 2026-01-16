@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  images: { unoptimized: true }, // Wichtig für statischen Export auf vielen Hosts
+  trailingSlash: true, // Creates /about/index.html instead of /about.html - better for Apache
+  images: { unoptimized: true }, // Important for static export on most hosts
 };
 export default nextConfig;
