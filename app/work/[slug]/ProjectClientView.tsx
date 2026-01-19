@@ -157,7 +157,7 @@ export default function ProjectClientView({ project }: { project: Project }) {
         {/* Top-Bar */}
         <div ref={topBarRef} className="fixed top-0 left-0 right-0 z-30">
           <div className="flex items-center justify-between px-4 py-3">
-            <div className="max-w-[75%]">
+            <div className="max-w-[65%]">
               <h3 className="font-jost text-base leading-tight text-black">
                 {project.title}
               </h3>
@@ -171,14 +171,21 @@ export default function ProjectClientView({ project }: { project: Project }) {
               )}
             </div>
 
-            {/* Runder Home-Button */}
-            <Link
-              href="/home"
-              className="grid h-11 w-11 place-items-center rounded-full bg-black text-white hover:opacity-90 transition"
-              aria-label="Zur Übersicht"
-            >
-              <HomeIcon className="h-5 w-5" />
-            </Link>
+            <div className="flex items-center gap-3">
+              {/* Image Counter */}
+              <span className="font-jost text-sm text-neutral-500 tabular-nums">
+                {index + 1} / {slides.length}
+              </span>
+
+              {/* Runder Home-Button */}
+              <Link
+                href="/home"
+                className="grid h-11 w-11 place-items-center rounded-full bg-black text-white hover:opacity-90 transition"
+                aria-label="Zur Übersicht"
+              >
+                <HomeIcon className="h-5 w-5" />
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -254,7 +261,7 @@ export default function ProjectClientView({ project }: { project: Project }) {
             ref={topBarRef}
             className="sticky top-0 z-20 flex items-center justify-between p-6 text-black"
           >
-            <div className="max-w-[70%]">
+            <div className="max-w-[60%]">
               <h3 className="font-jost text-xl leading-tight">{project.title}</h3>
               {project.description && (
                 <p className="text-base text-neutral-600 mt-1">
@@ -268,14 +275,21 @@ export default function ProjectClientView({ project }: { project: Project }) {
               )}
             </div>
 
-            {/* Runder Home-Button (Desktop) */}
-            <Link
-              href="/home"
-              className="grid h-12 w-12 place-items-center rounded-full bg-black text-white hover:opacity-70 transition"
-              aria-label="Back to home"
-            >
-              <HomeIcon className="h-6 w-6" />
-            </Link>
+            <div className="flex items-center gap-4">
+              {/* Image Counter */}
+              <span className="font-jost text-base text-neutral-500 tabular-nums">
+                {index + 1} / {slides.length}
+              </span>
+
+              {/* Runder Home-Button (Desktop) */}
+              <Link
+                href="/home"
+                className="grid h-12 w-12 place-items-center rounded-full bg-black text-white hover:opacity-70 transition"
+                aria-label="Back to home"
+              >
+                <HomeIcon className="h-6 w-6" />
+              </Link>
+            </div>
           </div>
 
           {/* Fixiertes Bildfenster zwischen Top-Bar und Thumbnails */}

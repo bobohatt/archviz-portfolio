@@ -1,13 +1,9 @@
-// app/(.)contact/page.tsx
-
 "use client";
-// NEU: useCallback importieren
 import { useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-function CloseIcon({ className = "" }: { className?: string }) { return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><path d="M6 6l12 12M6 18L18 6" /></svg>; }
+import { CloseIcon } from "@/app/components/Icons";
 
 export default function ContactSheet() {
     const router = useRouter();
@@ -70,16 +66,47 @@ export default function ContactSheet() {
                         </div>
 
                         {/* Text-Spalte */}
-                        <div className="space-y-4 text-neutral-800">
-                            <p>
-                                Wir sind bereit für neue Ideen und spannende Zusammenarbeit. Schreiben Sie uns einfach unter:
-                            </p>
-                            <p className="text-neutral-500">
-                                We are ready for new ideas and exciting collaborations. Just reach out to us at:
-                            </p>
+                        <div className="space-y-6 text-neutral-800">
+                            <div>
+                                <p className="mb-2">
+                                    Wir sind bereit für neue Ideen und spannende Zusammenarbeit. Schreiben Sie uns einfach unter:
+                                </p>
+                                <p className="text-neutral-500">
+                                    We are ready for new ideas and exciting collaborations. Just reach out to us at:
+                                </p>
+                            </div>
+
                             <p className="text-black underline underline-offset-4 text-lg">
                                 <a href="mailto:hallo@waarchi.de">hallo@waarchi.de</a>
                             </p>
+
+                            <div className="pt-4 border-t border-neutral-200">
+                                <p className="text-sm text-neutral-600 mb-3">
+                                    Für eine schnelle Bearbeitung, teilen Sie uns bitte mit:
+                                </p>
+                                <ul className="text-sm text-neutral-600 space-y-1 list-disc list-inside">
+                                    <li>Projekttyp (Außen-/Innenvisualisierung)</li>
+                                    <li>Gewünschter Zeitrahmen</li>
+                                    <li>Verfügbare Unterlagen (Pläne, Referenzen)</li>
+                                </ul>
+                                <p className="text-xs text-neutral-400 mt-4">
+                                    Wir antworten in der Regel innerhalb von 24 Stunden.
+                                </p>
+                            </div>
+
+                            <div className="pt-2">
+                                <p className="text-sm text-neutral-400 mb-3">
+                                    For a quick response, please share:
+                                </p>
+                                <ul className="text-sm text-neutral-400 space-y-1 list-disc list-inside">
+                                    <li>Project type (exterior/interior visualization)</li>
+                                    <li>Desired timeline</li>
+                                    <li>Available materials (plans, references)</li>
+                                </ul>
+                                <p className="text-xs text-neutral-300 mt-4">
+                                    We typically respond within 24 hours.
+                                </p>
+                            </div>
                         </div>
 
                     </div>

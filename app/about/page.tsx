@@ -1,11 +1,10 @@
 "use client";
-import { useEffect, useCallback } from "react"; // Korrekte Imports
+import { useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-function CloseIcon({ className = "" }: { className?: string }) { return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><path d="M6 6l12 12M6 18L18 6" /></svg>; }
+import { CloseIcon } from "@/app/components/Icons";
 
 export default function AboutSheet() {
   const router = useRouter();
@@ -45,8 +44,11 @@ export default function AboutSheet() {
         <div className="max-w-[2000px] mx-auto px-[40px] py-10 md:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             <div className="flex flex-col lg:flex-row items-start gap-8">
-              <div className="relative aspect-[1.6/3] w-64 sm:w-72 md:w-80 lg:w-96 shrink-0 overflow-hidden bg-neutral-100">
-                <Image src="/about/flymehammed.gif" alt="Portrait" fill className="object-cover" unoptimized />
+              <div className="shrink-0">
+                <div className="relative aspect-[1.6/3] w-64 sm:w-72 md:w-80 lg:w-96 overflow-hidden bg-neutral-100">
+                  <Image src="/about/flymehammed.gif" alt="Hammed - WaArchi Studio" fill className="object-cover" unoptimized />
+                </div>
+                <p className="font-jost text-sm text-neutral-600 mt-3">Hammed</p>
               </div>
               <div className="max-w-prose">
                 <h2 className="font-jost text-2xl md:text-3xl mb-4 text-neutral-800">Über uns.</h2>
@@ -55,8 +57,11 @@ export default function AboutSheet() {
               </div>
             </div>
             <div className="flex flex-col lg:flex-row items-start gap-8 lg:flex-row-reverse lg:text-right">
-              <div className="relative aspect-[1.6/3] w-64 sm:w-72 md:w-80 lg:w-96 shrink-0 overflow-hidden bg-neutral-100">
-                <Image src="/about/flymekaan.gif" alt="Portrait" fill className="object-cover" unoptimized />
+              <div className="shrink-0">
+                <div className="relative aspect-[1.6/3] w-64 sm:w-72 md:w-80 lg:w-96 overflow-hidden bg-neutral-100">
+                  <Image src="/about/flymekaan.gif" alt="Kaan - WaArchi Studio" fill className="object-cover" unoptimized />
+                </div>
+                <p className="font-jost text-sm text-neutral-600 mt-3 lg:text-right">Kaan</p>
               </div>
               <div className="max-w-prose lg:text-left">
                 <h3 className="font-jost text-xl md:text-3xl mb-4 text-neutral-400">About us.</h3>

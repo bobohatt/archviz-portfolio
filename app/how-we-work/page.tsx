@@ -1,11 +1,9 @@
 "use client";
-// NEU: useCallback importieren
 import { useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-function CloseIcon({ className = "" }: { className?: string }) { return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><path d="M6 6l12 12M6 18L18 6" /></svg>; }
+import { CloseIcon } from "@/app/components/Icons";
 
 export default function HowWeWorkSheet() {
     const router = useRouter();
