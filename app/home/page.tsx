@@ -63,7 +63,7 @@ export default function HomePage() {
       </header>
 
 
-    <section id="work" className="px-[40px] max-w-[2000px] mx-auto">
+    <section id="work" className="px-[40px] pt-[40px] max-w-[2000px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[40px] relative">
             {PROJECTS.map((p) => (
                 <div key={p.id} className="relative">
