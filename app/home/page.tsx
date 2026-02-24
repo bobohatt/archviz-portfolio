@@ -23,7 +23,7 @@ export default function HomePage() {
     }
 
     function onScroll() {
-      setIsScrolled(window.scrollY > 18);
+      setIsScrolled(window.scrollY > 10);
     }
 
     setHeaderVar();
@@ -44,13 +44,37 @@ export default function HomePage() {
         ref={headerRef}
         className={`sticky top-0 z-30 border-b transition-all duration-300 ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-md border-neutral-300 py-[10px] shadow-[0_2px_14px_rgba(0,0,0,0.04)]"
+            ? "bg-white/95 backdrop-blur-md border-neutral-300 py-[6px] shadow-[0_2px_14px_rgba(0,0,0,0.05)]"
             : "bg-white border-neutral-200 py-[15px]"
         }`}
       >
         <div className={`px-[16px] md:px-[40px] max-w-[2000px] mx-auto flex items-center justify-between gap-3 transition-all duration-300 ${isScrolled ? "md:gap-5" : "md:gap-3"}`}>
-          <Link href="/home" className="flex items-center gap-2 shrink-0">
-            <Image src="/logo.png" alt="WaArchi Logo" width={144} height={48} className={`w-auto shrink-0 transition-all duration-300 ${isScrolled ? "h-9 md:h-10" : "h-10 md:h-12"}`} priority />
+          <Link href="/home" className="relative flex items-center shrink-0 h-12 md:h-14 min-w-[144px]" aria-label="WaArchi Home">
+            <Image
+              src="/logo.png"
+              alt="WaArchi Logo"
+              width={144}
+              height={48}
+              className={`absolute left-0 w-auto shrink-0 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                isScrolled
+                  ? "h-7 md:h-8 opacity-0 -translate-y-0.5"
+                  : "h-10 md:h-12 opacity-100 translate-y-0"
+              }`}
+              priority
+            />
+
+            <span
+              aria-hidden
+              className={`absolute left-0 top-1/2 -translate-y-1/2 flex items-center gap-[6px] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                isScrolled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-0.5"
+              }`}
+            >
+              <span className="h-[6px] md:h-[7px] w-[34px] bg-black" />
+              <span className="h-[6px] md:h-[7px] w-[18px] bg-black" />
+              <span className="h-[6px] md:h-[7px] w-[22px] bg-black" />
+              <span className="h-[6px] md:h-[7px] w-[16px] bg-black" />
+              <span className="h-[6px] md:h-[7px] w-[28px] bg-black" />
+            </span>
           </Link>
           <nav className={`flex items-center gap-3 overflow-x-auto overscroll-x-contain max-w-[70%] md:max-w-none md:overflow-visible md:gap-6 transition-all duration-300 ${isScrolled ? "text-[11px] md:text-[13px] tracking-[0.03em]" : "text-xs md:text-sm"}`}>
             <Link href="/about" className="hover:opacity-60 transition-opacity shrink-0">über uns</Link>
