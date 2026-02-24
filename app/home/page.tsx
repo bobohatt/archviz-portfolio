@@ -1,7 +1,7 @@
 // app/home/page.tsx
 
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PROJECTS, type Project } from "@/lib/projects";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,25 +14,45 @@ function pickThumb(p: Project) {
 
 export default function HomePage() {
   const headerRef = useRef<HTMLElement | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     function setHeaderVar() {
       const h = headerRef.current?.offsetHeight ?? 0;
       document.documentElement.style.setProperty("--header-h", `${h}px`);
     }
+
+    function onScroll() {
+      setIsScrolled(window.scrollY > 18);
+    }
+
     setHeaderVar();
+    onScroll();
+
     window.addEventListener("resize", setHeaderVar);
-    return () => window.removeEventListener("resize", setHeaderVar);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("resize", setHeaderVar);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
     <main className="min-h-screen bg-white text-neutral-900 selection:bg-black selection:text-white">
-      <header ref={headerRef} className="sticky top-0 z-30 bg-white border-b border-neutral-200 pt-[15px] pb-[15px]">
-        <div className="px-[16px] md:px-[40px] max-w-[2000px] mx-auto flex items-center justify-between gap-3">
+      <header
+        ref={headerRef}
+        className={`sticky top-0 z-30 border-b transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/90 backdrop-blur-md border-neutral-300 py-[10px] shadow-[0_2px_14px_rgba(0,0,0,0.04)]"
+            : "bg-white border-neutral-200 py-[15px]"
+        }`}
+      >
+        <div className={`px-[16px] md:px-[40px] max-w-[2000px] mx-auto flex items-center justify-between gap-3 transition-all duration-300 ${isScrolled ? "md:gap-5" : "md:gap-3"}`}>
           <Link href="/home" className="flex items-center gap-2 shrink-0">
-            <Image src="/logo.png" alt="WaArchi Logo" width={144} height={48} className="h-10 md:h-12 w-auto shrink-0" priority />
+            <Image src="/logo.png" alt="WaArchi Logo" width={144} height={48} className={`w-auto shrink-0 transition-all duration-300 ${isScrolled ? "h-9 md:h-10" : "h-10 md:h-12"}`} priority />
           </Link>
-          <nav className="flex items-center gap-3 text-xs overflow-x-auto overscroll-x-contain max-w-[70%] md:max-w-none md:overflow-visible md:gap-6 md:text-sm">
+          <nav className={`flex items-center gap-3 overflow-x-auto overscroll-x-contain max-w-[70%] md:max-w-none md:overflow-visible md:gap-6 transition-all duration-300 ${isScrolled ? "text-[11px] md:text-[13px] tracking-[0.03em]" : "text-xs md:text-sm"}`}>
             <Link href="/about" className="hover:opacity-60 transition-opacity shrink-0">über uns</Link>
             <Link href="/how-we-work" className="hover:opacity-60 transition-opacity shrink-0">arbeitsweise</Link>
             <Link href="/contact" className="hover:opacity-60 transition-opacity shrink-0">kontakt</Link>
