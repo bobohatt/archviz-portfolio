@@ -49,8 +49,25 @@ export default function HomePage() {
         }`}
       >
         <div className={`px-[16px] md:px-[40px] max-w-[2000px] mx-auto flex items-center justify-between gap-3 transition-all duration-300 ${isScrolled ? "md:gap-5" : "md:gap-3"}`}>
-          <Link href="/home" className="flex items-center gap-2 shrink-0">
-            <Image src="/logo.png" alt="WaArchi Logo" width={144} height={48} className={`w-auto shrink-0 transition-all duration-300 ${isScrolled ? "h-9 md:h-10" : "h-10 md:h-12"}`} priority />
+          <Link href="/home" className="relative flex items-center gap-2 shrink-0 h-12 md:h-14 min-w-[144px]">
+            <Image
+              src="/logo.png"
+              alt="WaArchi Logo"
+              width={144}
+              height={48}
+              className={`absolute left-0 w-auto shrink-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                isScrolled
+                  ? "h-7 md:h-8 opacity-0 -translate-y-1 scale-95"
+                  : "h-10 md:h-12 opacity-100 translate-y-0 scale-100"
+              }`}
+              priority
+            />
+            <span
+              aria-hidden
+              className={`absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-black transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                isScrolled ? "w-[120px] md:w-[170px] opacity-100 scale-x-100" : "w-[120px] md:w-[170px] opacity-0 scale-x-0"
+              } origin-left`}
+            />
           </Link>
           <nav className={`flex items-center gap-3 overflow-x-auto overscroll-x-contain max-w-[70%] md:max-w-none md:overflow-visible md:gap-6 transition-all duration-300 ${isScrolled ? "text-[11px] md:text-[13px] tracking-[0.03em]" : "text-xs md:text-sm"}`}>
             <Link href="/about" className="hover:opacity-60 transition-opacity shrink-0">über uns</Link>
