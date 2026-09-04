@@ -70,7 +70,7 @@ export default function ImpressumPage() {
         {/* Inhalt (identisch strukturiert, nur Text vom bisherigen Impressum) */}
         <div className="max-w-[2000px] mx-auto px-[40px] py-10 md:py-16 text-neutral-700 space-y-6">
           <section className="space-y-4">
-            <p><strong>Angaben gemäß § 5 TMG</strong></p>
+            <p><strong>Angaben gemäß § 5 DDG</strong></p>
             <p>
               <strong>Kaan Özden</strong><br />
               Messerstraße 31<br />
@@ -86,11 +86,6 @@ export default function ImpressumPage() {
             <p>
               <strong>Vertretungsberechtigt:</strong><br />
               Kaan Özden
-            </p>
-
-            <p>
-              <strong>Umsatzsteuer-ID gemäß § 27a UStG:</strong><br />
-              128/5451/5573
             </p>
 
             <p>
